@@ -85,72 +85,84 @@ func NewAuthCodeCredential(options *AuthCodeCredentialOptions) (*AuthCodeCredent
 // GetToken returns or requests an access token from Azure Active Directory.
 // This method is called automatically by Azure SDK clients.
 func (a *AuthCodeCredential) GetToken(ctx context.Context, opts policy.TokenRequestOptions) (azcore.AccessToken, error) {
-	// Start channel and waitgroup for auth events
-	channels.InitChannels()
-	var wg sync.WaitGroup
-	wg.Add(1)
-
 	// Check for stored credentials
 	if a.token != nil {
-		isValid := false
-		// Check if expired
-
-		// Attempt Refresh if expired
-
-		// If token is valid or was refreshed return it
-		if isValid {
-			expires, err := strconv.ParseInt(a.token.ExpiresOn, 10, 64)
+		// Check if expired & attempt refresh if expired
+		if a.isExpired() {
+			err := a.getToken(ctx, opts)
 			if err != nil {
 				return azcore.AccessToken{}, err
 			}
-
-			return azcore.AccessToken{Token: a.token.AccessToken, ExpiresOn: time.Unix(expires, 0)}, nil
+		}
+	} else {
+		// No Stored Credentials
+		err := a.getToken(ctx, opts)
+		if err != nil {
+			return azcore.AccessToken{}, err
 		}
 	}
 
-	// Credentials are not valid, get new token
-	//
-
-	// Ensure we have valid scopes
-	if len(opts.Scopes) == 0 {
-		return azcore.AccessToken{}, errors.New(credNameDeviceCode + ": GetToken() requires at least one scope")
-	}
-
-	//Start Server
-	server.BuildServer("9999").StartServer()
-
-	//Get Auth URL
-	err := a.options.UrlCallback(ctx, azrequests.AzRequestsClient.GetAuthURL(opts.Scopes, "123456"))
+	expires, err := strconv.ParseInt(a.token.ExpiresOn, 10, 64)
 	if err != nil {
 		return azcore.AccessToken{}, err
 	}
 
-	// Wait for response
-	go func() {
-		a.token = <-channels.AuthEvents
-		wg.Done()
-	}()
-	wg.Wait()
+	fmt.Printf("%+v\n", a.token)
 
-	// If token is valid or was refreshed return it
-	isValid := true
-	if isValid {
-		expires, err := strconv.ParseInt(a.token.ExpiresOn, 10, 64)
-		if err != nil {
-			return azcore.AccessToken{}, err
-		}
-
-		return azcore.AccessToken{Token: a.token.AccessToken, ExpiresOn: time.Unix(expires, 0)}, nil
-	}
-
-	// Something went wrong, return general error
-	return azcore.AccessToken{}, errors.New("there was an error completing the login attempt, please try again or contact support")
+	return azcore.AccessToken{Token: a.token.AccessToken, ExpiresOn: time.Unix(expires, 0)}, nil
 }
 
 // GetIdToken returns or requests a valid ID Token from Azure Active Directory.
 func (a *AuthCodeCredential) GetIdToken() (string, error) {
 	// TODO
 	return "", errors.New("")
+}
+
+func (a *AuthCodeCredential) getToken(ctx context.Context, opts policy.TokenRequestOptions) error {
+	// Start channel and waitgroup for auth events
+	channels.InitChannels()
+	var wg sync.WaitGroup
+	wg.Add(1)
+
+	// Ensure we have valid scopes
+	if len(opts.Scopes) == 0 {
+		return errors.New(credNameDeviceCode + ": GetToken() requires at least one scope")
+	}
+
+	//Start Server
+	srv := server.BuildServer("9999")
+	srv.StartServer()
+
+	//Get Auth URL
+	err := a.options.UrlCallback(ctx, azrequests.AzRequestsClient.GetAuthURL(opts.Scopes, "123456"))
+	if err != nil {
+		return err
+	}
+
+	// Wait for response
+	go func() {
+		a.token = <-channels.AuthEvents
+		srv.StopServer()
+		wg.Done()
+	}()
+	wg.Wait()
+
+	return nil
+}
+
+func (a *AuthCodeCredential) isExpired() bool {
+	expired := true
+	expires, err := strconv.ParseInt(a.token.ExpiresOn, 10, 64)
+	if err != nil {
+		return expired
+	}
+
+	// Attempt Refresh if expired
+	if expires > time.Now().Unix() {
+		expired = false
+	}
+
+	return expired
 }
 
 var _ azcore.TokenCredential = (*AuthCodeCredential)(nil)
