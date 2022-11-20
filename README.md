@@ -21,6 +21,7 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
+![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/OpenMSPSolutions/Go-Azure-AuthCode?style=for-the-badge)
 
 <!-- PROJECT LOGO -->
 <br />
