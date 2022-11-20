@@ -107,8 +107,6 @@ func (a *AuthCodeCredential) GetToken(ctx context.Context, opts policy.TokenRequ
 		return azcore.AccessToken{}, err
 	}
 
-	fmt.Printf("%+v\n", a.token)
-
 	return azcore.AccessToken{Token: a.token.AccessToken, ExpiresOn: time.Unix(expires, 0)}, nil
 }
 
