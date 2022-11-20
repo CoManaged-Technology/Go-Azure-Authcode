@@ -16,6 +16,7 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
+<div align="center">
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
@@ -24,7 +25,6 @@
 
 <!-- PROJECT LOGO -->
 <br />
-<div align="center">
   <a href="https://github.com/OpenMSPSolutions/Go-Azure-AuthCode">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
@@ -37,7 +37,7 @@
     <a href="https://github.com/OpenMSPSolutions/Go-Azure-AuthCode"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/OpenMSPSolutions/Go-Azure-AuthCode">View Demo</a>
+    <a href="https://github.com/OpenMSPSolutions/Go-MSGraph-AuthCode-Tutorial">Example</a>
     ·
     <a href="https://github.com/OpenMSPSolutions/Go-Azure-AuthCode/issues">Report Bug</a>
     ·
@@ -51,9 +51,6 @@
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
@@ -67,7 +64,7 @@
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
+    <!-- <li><a href="#acknowledgments">Acknowledgments</a></li> -->
   </ol>
 </details>
 
@@ -171,13 +168,13 @@ Project Link: [https://github.com/OpenMSPSolutions/Go-Azure-AuthCode](https://gi
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
+<!-- ## Acknowledgments
 
 * []()
 * []()
 * []()
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p> -->
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
