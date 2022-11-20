@@ -34,8 +34,8 @@
   <p align="center">
     Azure AzIdentity add-on to allow the authorization code flow with PKCE
     <br />
-    <a href="https://github.com/OpenMSPSolutions/Go-Azure-AuthCode"><strong>Explore the docs »</strong></a>
-    <br />
+    <!-- <a href="https://github.com/OpenMSPSolutions/Go-Azure-AuthCode"><strong>Explore the docs »</strong></a>
+    <br /> -->
     <br />
     <a href="https://github.com/OpenMSPSolutions/Go-MSGraph-AuthCode-Tutorial">Example</a>
     ·
@@ -119,17 +119,18 @@ This is an example of how to list things you need to use the software and how to
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ROADMAP -->
 ## Roadmap
 
-* [ ] Feature 1
-* [ ] Feature 2
-* [ ] Feature 3
-  * [ ] Nested Feature
+* [X] Microsoft oAuth 2.0 Auth link generation
+* [X] Auto start/stop http server for receiving authorization codes
+* [X] Auto handle token requests from the azidentity auth provider
+* [X] PKCE Support
+* [ ] Refresh token support
+* [ ] ID Token Support
+* [ ] Go-SecureRoute (ngrok like proxy system) support to avoid using <http://localhost> for receiving authorization codes
 
 See the [open issues](https://github.com/OpenMSPSolutions/Go-Azure-AuthCode/issues) for a full list of proposed features (and known issues).
 
@@ -154,16 +155,7 @@ Don't forget to give the project a star! Thanks again!
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- CONTACT -->
-## Contact
-
-Open MSP Solutions - dev@OpenMSPSoftware.com.com
-
-Project Link: [https://github.com/OpenMSPSolutions/Go-Azure-AuthCode](https://github.com/OpenMSPSolutions/Go-Azure-AuthCode)
+Distributed under the MIT License. See `LICENSE` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
