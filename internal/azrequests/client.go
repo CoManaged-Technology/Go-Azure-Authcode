@@ -109,6 +109,24 @@ func (c *Client) GetToken(authCode string) (Token, error) {
 	return token, err
 }
 
+func (c *Client) GetTokenWithRefresh(refreshToken string) (Token, error) {
+	tokenURL := "https://login.microsoftonline.com/" + c.Options.TenantID + "/oauth2/token"
+	tokenRequest := url.Values{}
+	tokenRequest.Set("resource", "00000003-0000-0000-c000-000000000000")
+	tokenRequest.Set("client_id", c.Options.ClientID)
+	tokenRequest.Set("grant_type", "refresh_token")
+	tokenRequest.Set("refresh_token", refreshToken)
+
+	req, err := c.NewRequest("POST", tokenURL, tokenRequest)
+	if err != nil {
+		return Token{}, err
+	}
+
+	var token Token
+	_, err = c.Do(req, &token)
+	return token, err
+}
+
 func (c *Client) NewRequest(method, path string, body url.Values) (*http.Request, error) {
 	u, err := url.Parse(path)
 	if err != nil {

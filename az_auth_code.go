@@ -89,7 +89,7 @@ func (a *AuthCodeCredential) GetToken(ctx context.Context, opts policy.TokenRequ
 	if a.token != nil {
 		// Check if expired & attempt refresh if expired
 		if a.isExpired() {
-			err := a.getToken(ctx, opts)
+			err := a.getTokenWithRefresh(ctx, opts)
 			if err != nil {
 				return azcore.AccessToken{}, err
 			}
@@ -144,6 +144,17 @@ func (a *AuthCodeCredential) getToken(ctx context.Context, opts policy.TokenRequ
 		wg.Done()
 	}()
 	wg.Wait()
+
+	return nil
+}
+
+func (a *AuthCodeCredential) getTokenWithRefresh(ctx context.Context, opts policy.TokenRequestOptions) error {
+	token, err := azrequests.AzRequestsClient.GetToken(a.token.RefreshToken)
+	if err != nil {
+		return err
+	}
+
+	a.token = &token
 
 	return nil
 }
