@@ -129,6 +129,7 @@ Use this space to show useful examples of how a project can be used. Additional 
 * [X] Auto start/stop http server for receiving authorization codes
 * [X] Auto handle token requests from the azidentity auth provider
 * [X] PKCE Support
+* [ ] Auth Tenant Support
 * [ ] Refresh token support
 * [ ] ID Token Support
 * [ ] Go-SecureRoute (ngrok like proxy system) support to avoid using <http://localhost> for receiving authorization codes
