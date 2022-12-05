@@ -172,13 +172,13 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/OpenMSPSolutions/Go-Azure-AuthCode.svg?style=for-the-badge
-[contributors-url]: https://github.com/OpenMSPSolutions/Go-Azure-AuthCode/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/OpenMSPSolutions/Go-Azure-AuthCode.svg?style=for-the-badge
-[forks-url]: https://github.com/OpenMSPSolutions/Go-Azure-AuthCode/network/members
-[stars-shield]: https://img.shields.io/github/stars/OpenMSPSolutions/Go-Azure-AuthCode.svg?style=for-the-badge
-[stars-url]: https://github.com/OpenMSPSolutions/Go-Azure-AuthCode/stargazers
-[issues-shield]: https://img.shields.io/github/issues/OpenMSPSolutions/Go-Azure-AuthCode.svg?style=for-the-badge
-[issues-url]: https://github.com/OpenMSPSolutions/Go-Azure-AuthCode/issues
-[license-shield]: https://img.shields.io/github/license/OpenMSPSolutions/Go-Azure-AuthCode.svg?style=for-the-badge
-[license-url]: https://github.com/OpenMSPSolutions/Go-Azure-AuthCode/blob/master/LICENSE
+[contributors-shield]: https://img.shields.io/github/contributors/CoManaged-Technology/Go-Azure-Authcode?style=for-the-badge
+[contributors-url]: https://github.com/CoManaged-Technology/Go-Azure-Authcode/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/CoManaged-Technology/Go-Azure-Authcode?style=for-the-badge
+[forks-url]: https://github.com/CoManaged-Technology/Go-Azure-AuthCode/network/members
+[stars-shield]: https://img.shields.io/github/stars/CoManaged-Technology/Go-Azure-AuthCode.svg?style=for-the-badge
+[stars-url]: https://github.com/CoManaged-Technology/Go-Azure-AuthCode/stargazers
+[issues-shield]: https://img.shields.io/github/issues/CoManaged-Technology/Go-Azure-AuthCode.svg?style=for-the-badge
+[issues-url]: https://github.com/CoManaged-Technology/Go-Azure-AuthCode/issues
+[license-shield]: https://img.shields.io/github/license/CoManaged-Technology/Go-Azure-AuthCode.svg?style=for-the-badge
+[license-url]: https://github.com/CoManaged-Technology/Go-Azure-AuthCode/blob/master/LICENSE
